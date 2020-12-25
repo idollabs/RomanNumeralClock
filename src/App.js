@@ -32,11 +32,11 @@ const App = () => {
   useEffect(() => {
     if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
       setMilitary(12);
-      setHourButtonValue('XII Horam Horologium');
+      setHourButtonValue('XII HOPAM HOROΛOΓIVM');
       setShowAmPm('');
     } else {
       setMilitary(0);
-      setHourButtonValue('XXIV Horam Horologium');
+      setHourButtonValue('XXIV HOPAM HOROΛOΓIVM');
       setShowAmPm(timeOfDay);
     }
   }, [isMilitary]);
@@ -66,7 +66,7 @@ const App = () => {
 
   return (
     <main>
-      <h1>TEMPUS</h1>
+      <h1>TEMЛVS</h1>
       <button id='militaryBtn' onClick={makeMilitary}>
         {hourButtonValue}
       </button>

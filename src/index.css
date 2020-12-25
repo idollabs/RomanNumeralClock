@@ -8,15 +8,20 @@ main {
   background-color: rgba(255, 249, 242, 0.331);
   border-style: solid;
   border-width: 0.5vw;
-  border-color: rgba(255, 249, 242);
-  border-radius: 50%;
+  border-color: rgba(255, 249, 242, 0.42);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+  padding-bottom: 2.3vw;
 }
 
 h1 {
-  font-family: 'Texturina', serif;
+  font-family: 'Piazzolla', serif;
+
   text-align: center;
   font-size: 4vw;
-  font-weight: 100;
+  font-weight: 600;
 }
 
 button {
@@ -30,7 +35,7 @@ button {
   text-decoration: none;
   background-color: rgba(255, 249, 242);
   color: black;
-  font-family: 'Cinzel', serif;
+  font-family: 'Piazzolla', serif;
   font-size: 2vw;
   cursor: pointer;
   text-align: center;
@@ -52,42 +57,8 @@ button:active {
   transform: scale(0.99);
 }
 
-/* #militaryBtn {
-  text-align: center;
-  margin: auto;
-  display: block;
-}
-
-#militaryBtn:hover {
-  box-shadow: 0px 0px 0px transparent;
-} */
-
-/* #militaryBtn {
-  text-align: center;
-  font-family: 'Cinzel', serif;
-  font-size: 2vw;
-  display: block;
-  margin: auto;
-  background-color: rgba(255, 249, 242);
-  border-color: black;
-  border-radius: 5%;
-  border-width: 2px;
-  outline-color: rgb(236, 229, 221);
-} */
-/* #militaryBtn:focus {
-}
-
-button:active {
-  outline: none;
-  border: none;
-}
-
-#militaryBtn:hover {
-  background-color: rgb(252, 240, 226);
-} */
-
 .clock {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cormorant', serif;
   text-align: center;
 
   font-size: 17vw;
@@ -101,9 +72,11 @@ button:active {
   font-family: 'Cinzel', serif;
   text-align: center;
   font-size: 3vw;
+  margin-top: -1.5rem;
 }
 
 #timeOfDay {
+  margin-top: 0.3rem;
   font-family: 'Cinzel', serif;
   font-size: 9vw;
   text-align: center;

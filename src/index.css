@@ -17,11 +17,11 @@ main {
 }
 
 h1 {
-  font-family: 'Piazzolla', serif;
+  font-family: 'Texturina', serif;
 
   text-align: center;
   font-size: 4vw;
-  font-weight: 600;
+  font-weight: 100;
 }
 
 button {
@@ -35,11 +35,11 @@ button {
   text-decoration: none;
   background-color: rgba(255, 249, 242);
   color: black;
-  font-family: 'Piazzolla', serif;
+  font-family: 'Texturina', serif;
   font-size: 2vw;
   cursor: pointer;
   text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  transition: background 150ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
 }

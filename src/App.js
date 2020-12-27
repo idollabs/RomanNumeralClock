@@ -27,7 +27,30 @@ const App = () => {
     }, 1000);
 
     return () => clearInterval(secTimer);
-  }, []);
+  });
+
+  let hourString = dt.slice(11, -9);
+  // let hourConst = parseInt(hourString);
+  let hourNum = parseInt(hourString) + military;
+  let minuteString = dt.slice(14 + value, -6);
+  let minuteNum = parseInt(minuteString);
+  let secondString = dt.slice(17 + value, -3);
+  let secondNum = parseInt(secondString);
+  let timeOfDay = dt.slice(20 + value);
+
+  // const colan = (time) => {
+  //   if (time !== 0) {
+  //     return ':';
+  //   }
+  // };
+
+  const makeMilitary = () => {
+    if (!isMilitary) {
+      setIsMilitary(true);
+    } else {
+      setIsMilitary(false);
+    }
+  };
 
   useEffect(() => {
     if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
@@ -40,29 +63,6 @@ const App = () => {
       setShowAmPm(timeOfDay);
     }
   }, [isMilitary]);
-
-  let hourString = dt.slice(11, -9);
-  let hourConst = parseInt(hourString);
-  let hourNum = parseInt(hourString) + military;
-  let minuteString = dt.slice(14 + value, -6);
-  let minuteNum = parseInt(minuteString);
-  let secondString = dt.slice(17 + value, -3);
-  let secondNum = parseInt(secondString);
-  let timeOfDay = dt.slice(20 + value);
-
-  const colan = (time) => {
-    if (time !== 0) {
-      return ':';
-    }
-  };
-
-  const makeMilitary = () => {
-    if (!isMilitary) {
-      setIsMilitary(true);
-    } else {
-      setIsMilitary(false);
-    }
-  };
 
   return (
     <main>

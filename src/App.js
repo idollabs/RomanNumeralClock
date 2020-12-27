@@ -4,9 +4,9 @@ import Minute from './minute';
 const App = () => {
   const [dt, setDt] = useState(new Date().toLocaleString());
   const [value, setValue] = useState(0);
-  const [military, setMilitary] = useState(0);
+  const [military, setMilitary] = useState(12);
   const [isMilitary, setIsMilitary] = useState(true);
-  const [hourButtonValue, setHourButtonValue] = useState('');
+  const [hourButtonValue, setHourButtonValue] = useState('XII HORA HOROLOGIVM');
   const [showAmPm, setShowAmPm] = useState('');
 
   useEffect(() => {
@@ -44,15 +44,7 @@ const App = () => {
   //   }
   // };
 
-  const makeMilitary = () => {
-    if (!isMilitary) {
-      setIsMilitary(true);
-    } else {
-      setIsMilitary(false);
-    }
-  };
-
-  useEffect(() => {
+  const clockType = () => {
     if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
       setMilitary(12);
       setHourButtonValue('XII HORA HOROLOGIVM');
@@ -62,7 +54,29 @@ const App = () => {
       setHourButtonValue('XXIV HORA HOROLOGIVM');
       setShowAmPm(timeOfDay);
     }
-  }, [isMilitary]);
+  };
+
+  const makeMilitary = () => {
+    if (!isMilitary) {
+      setIsMilitary(true);
+      clockType();
+    } else {
+      setIsMilitary(false);
+      clockType();
+    }
+  };
+
+  // useEffect(() => {
+  //   if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
+  //     setMilitary(12);
+  //     setHourButtonValue('XII HORA HOROLOGIVM');
+  //     setShowAmPm('');
+  //   } else {
+  //     setMilitary(0);
+  //     setHourButtonValue('XXIV HORA HOROLOGIVM');
+  //     setShowAmPm(timeOfDay);
+  //   }
+  // }, [isMilitary]);
 
   return (
     <main>
@@ -78,6 +92,7 @@ const App = () => {
         {/* {colan(secondNum)}  */}: {Minute[secondNum]}
       </div>
       <article id='timeOfDay'>{showAmPm}</article>
+      {dt}
     </main>
   );
 };

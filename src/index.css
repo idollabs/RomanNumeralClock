@@ -61,7 +61,7 @@ button:active {
   font-family: 'Cormorant', serif;
   text-align: center;
 
-  font-size: 17vw;
+  font-size: 16vw;
 }
 
 #colan {
@@ -72,7 +72,7 @@ button:active {
   font-family: 'Cinzel', serif;
   text-align: center;
   font-size: 3vw;
-  margin-top: -1.5rem;
+  margin-top: -0.6rem;
 }
 
 #timeOfDay {

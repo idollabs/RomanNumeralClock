@@ -2,97 +2,67 @@ import React, { useState, useEffect } from 'react';
 import Minute from './minute';
 
 const App = () => {
-  const [dt, setDt] = useState(new Date().toLocaleString());
-  const [value, setValue] = useState(0);
-  const [military, setMilitary] = useState(12);
+  const [dt, setDt] = useState(new Date());
   const [isMilitary, setIsMilitary] = useState(true);
-  const [hourButtonValue, setHourButtonValue] = useState('XII HORA HOROLOGIVM');
-  const [showAmPm, setShowAmPm] = useState('');
 
   useEffect(() => {
     let secTimer = setInterval(() => {
-      setDt(new Date().toLocaleString());
+      setDt(new Date());
     }, 1000);
 
     return () => clearInterval(secTimer);
   }, []);
 
-  useEffect(() => {
-    let secTimer = setInterval(() => {
-      if (hourNum >= 10) {
-        setValue(1);
+  const hours12 = (date) => {
+    if (!isMilitary) {
+      return date % 12 || 12;
+    } else return date;
+  };
+
+  const amPmHandler = (hours) => {
+    if (!isMilitary) {
+      if (hours > 11) {
+        return 'PM';
       } else {
-        setValue(0);
+        return 'AM';
       }
-    }, 1000);
+    }
+    return '';
+  };
 
-    return () => clearInterval(secTimer);
-  });
-
-  let hourString = dt.slice(11, -9);
-  // let hourConst = parseInt(hourString);
-  let hourNum = parseInt(hourString) + military;
-  let minuteString = dt.slice(14 + value, -6);
-  let minuteNum = parseInt(minuteString);
-  let secondString = dt.slice(17 + value, -3);
-  let secondNum = parseInt(secondString);
-  let timeOfDay = dt.slice(20 + value);
-
-  // const colan = (time) => {
-  //   if (time !== 0) {
-  //     return ':';
+  // const buttonValue = (military) => {
+  //   if (military) {
+  //     return 'XII HORA HOROLOGIVM';
+  //   } else {
+  //     return 'XXVI HORA HOROLOGIVM';
   //   }
   // };
 
-  const clockType = () => {
-    if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
-      setMilitary(12);
-      setHourButtonValue('XII HORA HOROLOGIVM');
-      setShowAmPm('');
-    } else {
-      setMilitary(0);
-      setHourButtonValue('XXIV HORA HOROLOGIVM');
-      setShowAmPm(timeOfDay);
-    }
-  };
+  const buttonValue = isMilitary
+    ? 'XII HORA HOROLOGIVM'
+    : 'XXVI HORA HOROLOGIVM';
 
   const makeMilitary = () => {
     if (!isMilitary) {
       setIsMilitary(true);
-      clockType();
     } else {
       setIsMilitary(false);
-      clockType();
     }
   };
-
-  // useEffect(() => {
-  //   if (isMilitary && timeOfDay === 'PM' && hourNum !== 12) {
-  //     setMilitary(12);
-  //     setHourButtonValue('XII HORA HOROLOGIVM');
-  //     setShowAmPm('');
-  //   } else {
-  //     setMilitary(0);
-  //     setHourButtonValue('XXIV HORA HOROLOGIVM');
-  //     setShowAmPm(timeOfDay);
-  //   }
-  // }, [isMilitary]);
 
   return (
     <main>
       <h1>TEMPVS</h1>
       <button id='militaryBtn' onClick={makeMilitary}>
-        {hourButtonValue}
+        {buttonValue}
       </button>
 
       <div className='clock'>
-        {Minute[hourNum]} <span id='colan'>:</span> {Minute[minuteNum]}
+        {Minute[hours12(dt.getHours())]} <span id='colan'>:</span>{' '}
+        {Minute[dt.getMinutes()]}
       </div>
-      <div id='seconds'>
-        {/* {colan(secondNum)}  */}: {Minute[secondNum]}
-      </div>
-      <article id='timeOfDay'>{showAmPm}</article>
-      {dt}
+      <div id='seconds'>: {Minute[dt.getSeconds()]}</div>
+      <article id='timeOfDay'>{amPmHandler(dt.getHours())}</article>
     </main>
   );
 };

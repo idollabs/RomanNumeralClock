@@ -1,5 +1,6 @@
 {
   "name": "roman-numeral-clock-app",
+  "homepage": "https://romantime.org",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

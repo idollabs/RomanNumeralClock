@@ -16,14 +16,12 @@ main {
 .appHousing {
   margin: auto;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  max-width: 70rem;
+  max-height: 30rem;
 }
 
 #topper {
-  height: 40vw;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -38,13 +36,26 @@ main {
   align-items: flex-start;
 }
 
+.wedge {
+  height: 9vw;
+}
+
 .spacer {
   width: 80%;
 }
 
 .clockHousing {
   color: white;
-  background-image: url('images/Red-Curtains.jpg');
+  background-image: linear-gradient(
+      #eeeded,
+      #eeeded00,
+      #eeeded00,
+      #eeeded00,
+      #eeeded4c,
+      #eeeded93,
+      #eeeded
+    ),
+    url('images/marble-red-2-2018.jpg');
 
   background-position: center;
   background-size: 80% 100%;
@@ -65,15 +76,9 @@ main {
   height: 100%;
 }
 
-@supports (-webkit-text-stroke: 0.2vw black) {
-  .clock {
-    -webkit-text-stroke: 0.2vw black;
-    -webkit-text-fill-color: white;
-  }
-}
-
 h1 {
-  font-family: 'Texturina', serif;
+  /* font-family: 'Texturina', serif; */
+  font-family: 'Bellefair', serif;
 
   text-align: center;
   font-size: 4vw;
@@ -81,18 +86,18 @@ h1 {
 }
 
 button {
-  display: block;
-  border: solid black 0.15vw;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  display: flex;
+  /* border: solid black 0.15vw; */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 
   padding: 0.3rem 0.7rem;
   margin: auto;
   text-decoration: none;
-  background-color: rgba(255, 249, 242);
-  color: black;
+  background-color: rgb(143, 14, 16);
+  color: rgb(255, 255, 255);
   font-family: 'Texturina', serif;
-  font-size: 2vw;
+  font-size: 1rem;
   cursor: pointer;
   text-align: center;
   transition: background 150ms ease-in-out, transform 150ms ease;
@@ -101,7 +106,8 @@ button {
 }
 
 button:hover {
-  background-color: rgb(233, 229, 225);
+  background-color: rgb(233, 225, 225);
+  color: black;
 }
 
 button:focus {
@@ -113,16 +119,27 @@ button:active {
   transform: scale(0.99);
 }
 
+button img {
+  width: 3vw;
+  height: 3vw;
+  max-width: 2rem;
+  max-height: 2rem;
+}
+
 .clockInnerHousing {
+  /* background-color: rgba(140, 160, 95, 0.413); */
   width: 80%;
+  font-family: 'Bellefair', serif;
 }
 
 .clock {
-  font-family: 'Cormorant', serif;
+  /* font-family: 'Cormorant', serif; */
+
   text-align: center;
   font-weight: 100;
-
-  font-size: 15vw;
+  width: 100%;
+  font-size: 6rem;
+  /* background-color: rgba(95, 158, 160, 0.413); */
 }
 
 #colan {
@@ -130,30 +147,50 @@ button:active {
 }
 
 #seconds {
-  font-family: 'Cinzel', serif;
-  color: black;
+  color: white;
   text-align: center;
-  font-size: 3vw;
+  font-size: 2.5rem;
   margin-top: -0.6rem;
+
+  -webkit-text-stroke: 0.12vw black;
+  -webkit-text-fill-color: white;
 }
 
 #timeOfDay {
   margin-top: 0.3rem;
   color: black;
-  font-family: 'Cinzel', serif;
-  font-size: 9vw;
+  font-size: 5rem;
   text-align: center;
 }
 
-/* @media screen and (min-width: 800px) {
-  body {
-    background-size: 33.3vw;
+@supports (-webkit-text-stroke: 0.2vw black) {
+  .clock {
+    -webkit-text-stroke: 0.2vw black;
+    -webkit-text-fill-color: white;
   }
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    background-repeat: no-repeat;
-    background-size: 100%;
+@media screen and (max-width: 800px) {
+  .appHousing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-} */
+
+  button {
+    font-size: 2vw;
+  }
+
+  .clock {
+    font-size: 10vw;
+  }
+
+  #seconds {
+    font-size: 5vw;
+  }
+
+  #timeOfDay {
+    font-size: 9vw;
+  }
+}

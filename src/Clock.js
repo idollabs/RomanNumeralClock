@@ -3,6 +3,7 @@ import Minute from './minute';
 import pillarMiddle from './images/romanpillarelementsmiddle.png';
 import pillarTop from './images/romanpillarelementstop.png';
 import pillarBottom from './images/romanpillarelementsbottom.png';
+import emblem from './images/RomanEmblem.png';
 
 const Clock = () => {
   const [dt, setDt] = useState(new Date());
@@ -49,18 +50,20 @@ const Clock = () => {
     <>
       <div className='appHousing'>
         <div id='topper'>
-          <img id='leftPillar' src={pillarTop} alt='' />
+          <img className='leftPillar' src={pillarTop} alt='' />
           <div className='spacer'>
             <div className='title-and-button'>
               <h1>TEMPVS</h1>
 
               <button id='militaryBtn' onClick={makeMilitary}>
-                {buttonValue}
+                <img src={emblem} alt='' />
+                {` ${'\xa0'} ${buttonValue} ${'\xa0'} `}
+                <img src={emblem} alt='' />
               </button>
               <br />
             </div>
           </div>
-          <img id='rightPillar' src={pillarTop} alt='' />
+          <img className='rightPillar' src={pillarTop} alt='' />
         </div>
 
         <div className='clockHousing'>
@@ -77,10 +80,12 @@ const Clock = () => {
         </div>
 
         <div id='bottom'>
-          <img id='leftPillar' src={pillarBottom} alt='' />
+          <img className='leftPillar' src={pillarBottom} alt='' />
           <div className='spacer'></div>
-          <img id='rightPillar' src={pillarBottom} alt='' />
+          <img className='rightPillar' src={pillarBottom} alt='' />
         </div>
+
+        <div className='wedge'></div>
       </div>
     </>
   );
